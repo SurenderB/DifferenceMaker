@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33297E87-3C1A-4B0A-9087-BAD79D042411}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="DifferenceMakerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DifferenceMakerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DifferenceMakerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DifferenceMakerModel.edmx</DependentUpon>
+      <LastGenOutput>DifferenceMakerModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DifferenceMakerModel.edmx.diagram">
+      <DependentUpon>DifferenceMakerModel.edmx</DependentUpon>
+    </None>
+    <None Include="DifferenceMakerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DifferenceMakerModel.edmx</DependentUpon>
+      <LastGenOutput>DifferenceMakerModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Awards_EmployeeHasNotRedeemedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_EmployeePresentedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_EmployeeReceivedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_EmployeeReceived_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_EmployeeRedeemedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_RedeemedDuringPayPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_TeamHasNotRedeemedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_TeamPresentedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_TeamReceivedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Awards_TeamRedeemedDuringPeriod_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Award_S_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DifferenceMakerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DifferenceMakerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DifferenceMakerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DifferenceMakerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DifferenceMakerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Employees_AllActive_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employees_OfLeaderRecursive_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employees_OfLeader_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee_HasNetworkID_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leader_OfEmployee_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leader_S_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaySchedule_MinMaxOfYear_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaySchedule_OfYear_Result.cs">
+      <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

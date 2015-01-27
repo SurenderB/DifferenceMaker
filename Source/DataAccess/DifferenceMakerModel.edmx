@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DifferenceMakerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Award_Deactivate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Award_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Award_I" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Presenter_ID" Type="int" Mode="In" />
+          <Parameter Name="Recipient_ID" Type="int" Mode="In" />
+          <Parameter Name="PresentedOn" Type="datetime" Mode="In" />
+          <Parameter Name="Reason" Type="varchar" Mode="In" />
+          <Parameter Name="IsDifferenceMaker" Type="bit" Mode="In" />
+          <Parameter Name="Amount" Type="money" Mode="In" />
+          <Parameter Name="AwardDescription" Type="varchar" Mode="In" />
+          <Parameter Name="Award_ID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Award_Redeem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RedeemedOn" Type="smalldatetime" Mode="In" />
+          <Parameter Name="RedemptionLocation" Type="varchar" Mode="In" />
+          <Parameter Name="RedemptionComment" Type="varchar" Mode="In" />
+          <Parameter Name="Award_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Award_S" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Award_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Awards_EmployeeHasNotRedeemedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_EmployeePresentedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_EmployeeReceived" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Awards_EmployeeReceivedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_EmployeeRedeemedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_RedeemedDuringPayPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PayPeriod" Type="varchar" Mode="In" />
+          <Parameter Name="IsDifferenceMaker" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Awards_TeamHasNotRedeemedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_TeamPresentedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_TeamReceivedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Awards_TeamRedeemedDuringPeriod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+          <Parameter Name="StartingOn" Type="datetime" Mode="In" />
+          <Parameter Name="EndingOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Employee_HasNetworkID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NetworkID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Employee_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Employees_AllActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Employees_OfLeader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Employees_OfLeaderRecursive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LeaderEmployee_ID" Type="int" Mode="In" />
+          <Parameter Name="IsPartentIncluded" Type="bit" Mode="In" />
+          <Parameter Name="IsTerminatedIncluded" Type="bit" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Employee_ID" Type="int" />
+                <Property Name="LeaderEmployee_ID" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="Leader_OfEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Leader_S" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Location_OfEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PayPeriod_OfPayrollDeadlineOn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PayrollDeadlineOn" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PaySchedule_MinMaxOfYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PaySchedule_OfYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PayrollYear" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="Team_OfEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_ID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DifferenceMakerModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DifferenceMakerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Employees_OfLeaderRecursive_Result">
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="LeaderEmployee_ID" Type="Int32" />
+        </ComplexType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Employees_OfLeaderRecursive" IsComposable="true" ReturnType="Collection(DifferenceMakerModel.Employees_OfLeaderRecursive_Result)">
+            <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsPartentIncluded" Mode="In" Type="Boolean" />
+            <Parameter Name="IsTerminatedIncluded" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Award_Deactivate">
+          <Parameter Name="Award_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Award_I">
+            <Parameter Name="Presenter_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Recipient_ID" Mode="In" Type="Int32" />
+            <Parameter Name="PresentedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="Reason" Mode="In" Type="String" />
+            <Parameter Name="IsDifferenceMaker" Mode="In" Type="Boolean" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="AwardDescription" Mode="In" Type="String" />
+            <Parameter Name="Award_ID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Award_Redeem">
+            <Parameter Name="RedeemedOn" Mode="In" Type="DateTime" />
+            <Parameter Name="RedemptionLocation" Mode="In" Type="String" />
+            <Parameter Name="RedemptionComment" Mode="In" Type="String" />
+            <Parameter Name="Award_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Award_S" ReturnType="Collection(DifferenceMakerModel.Award_S_Result)">
+          <Parameter Name="Award_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_EmployeeHasNotRedeemedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_EmployeeHasNotRedeemedDuringPeriod_Result)">
+            <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_EmployeePresentedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_EmployeePresentedDuringPeriod_Result)">
+            <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_EmployeeReceived" ReturnType="Collection(DifferenceMakerModel.Awards_EmployeeReceived_Result)">
+          <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_EmployeeReceivedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_EmployeeReceivedDuringPeriod_Result)">
+            <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_EmployeeRedeemedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_EmployeeRedeemedDuringPeriod_Result)">
+            <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_RedeemedDuringPayPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_RedeemedDuringPayPeriod_Result)">
+            <Parameter Name="PayPeriod" Mode="In" Type="String" />
+            <Parameter Name="IsDifferenceMaker" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_TeamPresentedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_TeamPresentedDuringPeriod_Result)">
+            <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_TeamReceivedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_TeamReceivedDuringPeriod_Result)">
+            <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_TeamRedeemedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_TeamRedeemedDuringPeriod_Result)">
+            <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Employee_HasNetworkID" ReturnType="Collection(DifferenceMakerModel.Employee_HasNetworkID_Result)">
+          <Parameter Name="NetworkID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Employees_OfLeader" ReturnType="Collection(DifferenceMakerModel.Employees_OfLeader_Result)">
+          <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Leader_OfEmployee" ReturnType="Collection(DifferenceMakerModel.Leader_OfEmployee_Result)">
+          <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Leader_S" ReturnType="Collection(DifferenceMakerModel.Leader_S_Result)">
+          <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PayPeriod_OfPayrollDeadlineOn" ReturnType="Collection(String)">
+          <Parameter Name="PayrollDeadlineOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PaySchedule_OfYear" ReturnType="Collection(DifferenceMakerModel.PaySchedule_OfYear_Result)">
+          <Parameter Name="PayrollYear" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="Team_OfEmployee" ReturnType="Collection(String)">
+          <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Awards_TeamHasNotRedeemedDuringPeriod" ReturnType="Collection(DifferenceMakerModel.Awards_TeamHasNotRedeemedDuringPeriod_Result)">
+            <Parameter Name="LeaderEmployee_ID" Mode="In" Type="Int32" />
+            <Parameter Name="StartingOn" Mode="In" Type="DateTime" />
+            <Parameter Name="EndingOn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PaySchedule_MinMaxOfYear" ReturnType="Collection(DifferenceMakerModel.PaySchedule_MinMaxOfYear_Result)" />
+          <FunctionImport Name="Employees_AllActive" ReturnType="Collection(DifferenceMakerModel.Employees_AllActive_Result)" />
+          <FunctionImport Name="Employee_Location" ReturnType="Collection(String)">
+          <Parameter Name="Employee_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Award_S_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDifferenceMaker" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AmountGross" Nullable="true" Precision="19" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Awards_EmployeeHasNotRedeemedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Awards_EmployeePresentedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Awards_EmployeeReceived_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDifferenceMaker" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AmountGross" Nullable="true" Precision="19" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Awards_EmployeeReceivedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Awards_EmployeeRedeemedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="Int32" Name="Presenter_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Recipient_ID" Nullable="false" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Awards_RedeemedDuringPayPeriod_Result">
+          <Property Type="String" Name="Batch_Name" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Employee_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Clock_No" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Gross_Amount" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="Payroll_Code" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="S1" Nullable="false" />
+          <Property Type="Int32" Name="S2" Nullable="false" />
+          <Property Type="String" Name="S3" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="Awards_TeamPresentedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Awards_TeamReceivedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Awards_TeamRedeemedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="Employee_HasNetworkID_Result">
+          <Property Type="Int32" Name="Employee_ID" Nullable="false" />
+          <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsSupervisor" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Employees_OfLeader_Result">
+          <Property Type="Int32" Name="Employee_ID" Nullable="true" />
+          <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LeaderEmployee_ID" Nullable="true" />
+          <Property Type="String" Name="LeaderDisplayName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Leader_OfEmployee_Result">
+          <Property Type="Int32" Name="LeaderEmployee_ID" Nullable="true" />
+          <Property Type="String" Name="LeaderDisplayName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LeaderEmail" Nullable="true" MaxLength="65" />
+        </ComplexType>
+        <ComplexType Name="Leader_S_Result">
+          <Property Type="Int32" Name="Employee_ID" Nullable="false" />
+          <Property Type="String" Name="Leader_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PaySchedule_OfYear_Result">
+          <Property Type="DateTime" Name="PayrollDeadlineDate_dt" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PayPeriodNumber_tx" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="Awards_TeamHasNotRedeemedDuringPeriod_Result">
+          <Property Type="Int32" Name="Award_ID" Nullable="false" />
+          <Property Type="String" Name="Presenter" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="PresenterTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="PresenterLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Recipient" Nullable="true" MaxLength="71" />
+          <Property Type="String" Name="RecipientTeam" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="RecipientLocation" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PresentedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="3000" />
+          <Property Type="String" Name="RedeemedOn" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RedemptionLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RedemptionComment" Nullable="true" MaxLength="3000" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="String" Name="AwardDescription" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="PaySchedule_MinMaxOfYear_Result">
+          <Property Type="Int32" Name="MinPayScheduleYear" Nullable="true" />
+          <Property Type="Int32" Name="MaxPayScheduleYear" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Employees_AllActive_Result">
+          <Property Type="Int32" Name="Employee_ID" Nullable="false" />
+          <Property Type="String" Name="NameFirst" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NameMiddle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NameLast" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NameDisplay" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NetworkId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LeaderEmployee_ID" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DifferenceMakerModelStoreContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionName="DifferenceMakerModel.Store.Employees_OfLeaderRecursive" FunctionImportName="Employees_OfLeaderRecursive">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Employees_OfLeaderRecursive_Result">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="LeaderEmployee_ID" ColumnName="LeaderEmployee_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Award_Deactivate" FunctionName="DifferenceMakerModel.Store.Award_Deactivate" />
+          <FunctionImportMapping FunctionImportName="Award_I" FunctionName="DifferenceMakerModel.Store.Award_I" />
+          <FunctionImportMapping FunctionImportName="Award_Redeem" FunctionName="DifferenceMakerModel.Store.Award_Redeem" />
+          <FunctionImportMapping FunctionImportName="Award_S" FunctionName="DifferenceMakerModel.Store.Award_S">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Award_S_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="IsDifferenceMaker" ColumnName="IsDifferenceMaker" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AmountGross" ColumnName="AmountGross" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_EmployeeHasNotRedeemedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_EmployeeHasNotRedeemedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_EmployeeHasNotRedeemedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_EmployeePresentedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_EmployeePresentedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_EmployeePresentedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_EmployeeReceived" FunctionName="DifferenceMakerModel.Store.Awards_EmployeeReceived">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_EmployeeReceived_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="IsDifferenceMaker" ColumnName="IsDifferenceMaker" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AmountGross" ColumnName="AmountGross" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_EmployeeReceivedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_EmployeeReceivedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_EmployeeReceivedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_EmployeeRedeemedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_EmployeeRedeemedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_EmployeeRedeemedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient_ID" ColumnName="Recipient_ID" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_RedeemedDuringPayPeriod" FunctionName="DifferenceMakerModel.Store.Awards_RedeemedDuringPayPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_RedeemedDuringPayPeriod_Result">
+                <ScalarProperty Name="Batch_Name" ColumnName="Batch Name" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee Name" />
+                <ScalarProperty Name="Clock_No" ColumnName="Clock No" />
+                <ScalarProperty Name="Gross_Amount" ColumnName="Gross Amount" />
+                <ScalarProperty Name="Payroll_Code" ColumnName="Payroll Code" />
+                <ScalarProperty Name="S1" ColumnName="S1" />
+                <ScalarProperty Name="S2" ColumnName="S2" />
+                <ScalarProperty Name="S3" ColumnName="S3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_TeamPresentedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_TeamPresentedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_TeamPresentedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_TeamReceivedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_TeamReceivedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_TeamReceivedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Awards_TeamRedeemedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_TeamRedeemedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_TeamRedeemedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Employee_HasNetworkID" FunctionName="DifferenceMakerModel.Store.Employee_HasNetworkID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Employee_HasNetworkID_Result">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
+                <ScalarProperty Name="IsSupervisor" ColumnName="IsSupervisor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Employees_OfLeader" FunctionName="DifferenceMakerModel.Store.Employees_OfLeader">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Employees_OfLeader_Result">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
+                <ScalarProperty Name="LeaderEmployee_ID" ColumnName="LeaderEmployee_ID" />
+                <ScalarProperty Name="LeaderDisplayName" ColumnName="LeaderDisplayName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Leader_OfEmployee" FunctionName="DifferenceMakerModel.Store.Leader_OfEmployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Leader_OfEmployee_Result">
+                <ScalarProperty Name="LeaderEmployee_ID" ColumnName="LeaderEmployee_ID" />
+                <ScalarProperty Name="LeaderDisplayName" ColumnName="LeaderDisplayName" />
+                <ScalarProperty Name="LeaderEmail" ColumnName="LeaderEmail" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Leader_S" FunctionName="DifferenceMakerModel.Store.Leader_S">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Leader_S_Result">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Leader_Name" ColumnName="Leader Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PayPeriod_OfPayrollDeadlineOn" FunctionName="DifferenceMakerModel.Store.PayPeriod_OfPayrollDeadlineOn" />
+          <FunctionImportMapping FunctionImportName="PaySchedule_OfYear" FunctionName="DifferenceMakerModel.Store.PaySchedule_OfYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.PaySchedule_OfYear_Result">
+                <ScalarProperty Name="PayrollDeadlineDate_dt" ColumnName="PayrollDeadlineDate_dt" />
+                <ScalarProperty Name="PayPeriodNumber_tx" ColumnName="PayPeriodNumber_tx" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Team_OfEmployee" FunctionName="DifferenceMakerModel.Store.Team_OfEmployee" />
+          <FunctionImportMapping FunctionImportName="Awards_TeamHasNotRedeemedDuringPeriod" FunctionName="DifferenceMakerModel.Store.Awards_TeamHasNotRedeemedDuringPeriod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Awards_TeamHasNotRedeemedDuringPeriod_Result">
+                <ScalarProperty Name="Award_ID" ColumnName="Award_ID" />
+                <ScalarProperty Name="Presenter" ColumnName="Presenter" />
+                <ScalarProperty Name="PresenterTeam" ColumnName="PresenterTeam" />
+                <ScalarProperty Name="PresenterLocation" ColumnName="PresenterLocation" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="RecipientTeam" ColumnName="RecipientTeam" />
+                <ScalarProperty Name="RecipientLocation" ColumnName="RecipientLocation" />
+                <ScalarProperty Name="PresentedOn" ColumnName="PresentedOn" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RedeemedOn" ColumnName="RedeemedOn" />
+                <ScalarProperty Name="RedemptionLocation" ColumnName="RedemptionLocation" />
+                <ScalarProperty Name="RedemptionComment" ColumnName="RedemptionComment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AwardDescription" ColumnName="AwardDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaySchedule_MinMaxOfYear" FunctionName="DifferenceMakerModel.Store.PaySchedule_MinMaxOfYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.PaySchedule_MinMaxOfYear_Result">
+                <ScalarProperty Name="MinPayScheduleYear" ColumnName="MinPayScheduleYear" />
+                <ScalarProperty Name="MaxPayScheduleYear" ColumnName="MaxPayScheduleYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Employees_AllActive" FunctionName="DifferenceMakerModel.Store.Employees_AllActive">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DifferenceMakerModel.Employees_AllActive_Result">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="NameFirst" ColumnName="NameFirst" />
+                <ScalarProperty Name="NameMiddle" ColumnName="NameMiddle" />
+                <ScalarProperty Name="NameLast" ColumnName="NameLast" />
+                <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
+                <ScalarProperty Name="NetworkId" ColumnName="NetworkId" />
+                <ScalarProperty Name="LeaderEmployee_ID" ColumnName="LeaderEmployee_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Employee_Location" FunctionName="DifferenceMakerModel.Store.Employee_Location" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

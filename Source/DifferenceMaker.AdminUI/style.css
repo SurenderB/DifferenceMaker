@@ -1,0 +1,107 @@
+/*Angular*/
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 500px; 
+    height: 250px;
+}
+
+#reportingGrid {
+    width: 600px; 
+}
+/* CSS Document */
+Body {
+background-color: #F6F5F0;
+background-image: url(images/bgrpeat.jpg);
+background-repeat: repeat-x;
+font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+font-size:11.7px;
+}
+
+.Button
+{
+	height:24px;
+	width:140px;
+	font-family:Arial;
+	font-size:10pt;
+}
+
+.Tab 
+{
+	background: url(images/tabbg.gif);
+}
+
+.Redeem 
+{
+	background: url(images/redeem.gif);
+}
+
+.Link
+{
+	color:White;
+	font-weight:bold;
+}
+
+/*.Admin
+{
+	vertical-align:top;
+	/*background-image: url(images/admin.gif);
+	background-color:#C9C9C7;
+	height:697px;
+	width:538px; 
+}
+
+.AdminExpanded
+{
+	vertical-align:top;
+	/*background-image: url(images/adminExpanded.gif);
+	background-repeat:no-repeat;
+	background-color:#F6F5F0;
+	height:687px;
+	width:528px;
+}
+
+*/
+.Admin
+{
+	vertical-align:top;
+	background-color:#F6F5F0;
+	border-color:#C9C9C7;
+	border-width:1px;
+}
+
+.Lookup
+{
+	background: url(images/view.gif);
+	background-repeat:no-repeat;
+}
+
+.detailsTable {
+    text-align: left;
+    border: 1px solid #ddd;
+    
+}
+
+.detailsTable tr:nth-child(odd)		{ background-color:#eee; }
+.detailsTable tr:nth-child(even)		{ background-color:#fff; }
+
+#tabAwards {
+    width: 95%;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 15px;
+}
+
+.detailTable {
+    border: 1px solid rgb(212,212,212);
+    width: 500px; 
+    height: 400px;
+}
+
+#tabPending {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.ui-widget-content .ui-icon {
+background-image: url(themes/base/images/ui-icons_222222_256x240.png);
+}

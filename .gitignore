@@ -1,0 +1,4 @@
+**/obj/
+**/bin/
+Source/packages
+Source/.nuget/

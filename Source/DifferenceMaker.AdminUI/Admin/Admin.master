@@ -1,0 +1,140 @@
+<%@ Master Language="C#" Inherits="Admin_Admin_Master" CodeBehind="Admin.master.cs" %>
+
+<!DOCTYPE html>
+<html ng-app="differenceMakerApp">
+<head id="Head1" runat="server">
+    <title>Admin Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"> <!-- Prevents 'Tools -> Compatibility Mode Settings -> Display Intranet sites in compatibility mode' from having negative impact. -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../Scripts/jquery-ui-1.11.2.custom/jquery-ui.css" />
+    <link href="../Content/ng-grid.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-ui-1.11.2.custom/external/jquery/jquery.js"></script>
+    <script src="../Scripts/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/ng-grid.js"></script>
+    <script type="text/javascript" id="HelpJS">
+        function showRedemptionHelp() {
+            help_view = window.open('<%= ConfigurationManager.AppSettings["helpUrl"] %>', 'help_view', 'menubar=yes,resizable=yes,width=640,height=480');
+            help_view.focus();
+        }
+
+        var restUrl = '<%= ConfigurationManager.AppSettings["restUrl"] %>';
+
+
+        function GetCurrentPageName() {
+            //method to get Current page name from url. 
+            var pageUrl = document.location.href;
+            var pageName = pageUrl.substring(pageUrl.lastIndexOf('/') + 1);
+
+            return pageName.toLowerCase();
+        }
+
+        //$(document).ready(function () {
+        var currPage = GetCurrentPageName();
+
+        switch (currPage) {
+            case 'Redemption.aspx':
+                $('#lnkRedemption').addClass('active');
+                break;
+            case 'Reporting.aspx':
+                $('#lnkReporting').addClass('active');
+                break;
+            case 'admin.aspx':
+                $('#lnkAdmin').addClass('active');
+                break;
+        }
+        //});
+
+    </script>
+
+    <style type="text/css">
+        .auto-style1 {
+            height: 515px;
+            width: 650px;
+        }
+
+        .auto-style2 {
+            width: 650px;
+        }
+    </style>
+
+</head>
+<%--<body ng-cloak>--%>
+    <body>
+    <form id="form1" runat="server">
+        <div align="center">
+            <table width="1080" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td colspan="100%" style="padding-top: 10px;" align="right">
+                        <h5>
+                            <ul class="list-inline">
+                                <li role="presentation" class="active"><a href="<%= ConfigurationManager.AppSettings["guidelinesUrl"] %>" class="Link">Recognition Guideline</a></li>
+                                <li role="presentation">
+                                    <asp:HyperLink ID="hlHelp" NavigateUrl="#" CssClass="Link" runat="server">HyperLink</asp:HyperLink></li>
+                                <li role="presentation"><a href="http://www.smartoneprepaid.com/manage-account" target="_blank" class="Link">Card Balance</a> </li>
+                                <li role="presentation"><a href="../Default.aspx" class="Link">Submit Recognition</a></li>
+                            </ul>
+                        </h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <img src="../images/top.png" width="1080" height="12"></td>
+                </tr>
+                <tr>
+                    <td style="width: 1080px">
+                        <img src="../images/header1080.png" width="1080" height="123" alt="" /></td>
+
+                </tr>
+                <tr>
+                    <td colspan="3" background="../images/mainbg.png" width="1080 ">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <table style="margin-left: auto; margin-right: auto">
+                                        <tr>
+                                            <td colspan="100%" valign="bottom" class="auto-style2">
+                                                    <ul class="nav nav-pills nav-justified lead">
+                                                        <li id="lnkRedemption">
+                                                            <asp:HyperLink ID="hlRedemption" NavigateUrl="~/Admin/Redemption.aspx" runat="server">Redemption Page</asp:HyperLink>
+                                                        </li>
+                                                        <li id="lnkReporting">
+                                                            <asp:HyperLink ID="hlReport" NavigateUrl="~/Admin/Reporting.aspx" runat="server">Reporting Page</asp:HyperLink>
+                                                        </li>
+                                                        <li id="lnkAdmin">
+                                                            <asp:HyperLink ID="hlAdmin" runat="server" NavigateUrl="~/Admin/admin.aspx">Administration Page</asp:HyperLink>
+                                                        </li>
+                                                    </ul>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style1">
+                                                <table class="Admin" border="1" cellpadding="3" cellspacing="3">
+                                                    <tr>
+                                                        <td>
+                                                            <div style="min-height: 500px; min-width: 650px">
+                                                                <asp:ContentPlaceHolder ID="cphAdminContent" runat="server">
+                                                                </asp:ContentPlaceHolder>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <img src="../images/btm.png" width="1080" height="23"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
