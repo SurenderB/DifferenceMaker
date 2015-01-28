@@ -1,7 +1,8 @@
 # DifferenceMaker
 
 ## Database
-
+* Create a new database (in SQL Server) named _DifferenceMaker_
+* Run the script: _./SQL/CreateTablesAndProcs.sql_ to build the objects in the database
 
 ## Source Code
 After downloading the source:
@@ -14,3 +15,4 @@ After downloading the source:
  * Set index.html as the Start Page
 * Within the Services folder
  * Open the Web.config file for the DifferenceMaker.WebAPI project and modify the connection string to match the database name created above
+* Run the app
