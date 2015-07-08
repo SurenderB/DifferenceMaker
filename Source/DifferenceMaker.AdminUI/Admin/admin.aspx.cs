@@ -81,8 +81,6 @@ partial class Admin_admin : System.Web.UI.Page
     {
         string destination = null;
 
-        string blah = this.DetailsView1.Rows[8].Cells[1].Text;
-
         if ((this.DetailsView1.Rows[8].Cells[1] == null) || (this.DetailsView1.Rows[8].Cells[1].Text == "Not Yet Redeemed") || (UserUtil.IsCurrentUserAdmin() && this.DetailsView1.Rows[10].Cells[1].Text == "Auto Redeemed"))
         {
             try

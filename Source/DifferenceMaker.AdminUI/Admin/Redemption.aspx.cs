@@ -1,11 +1,10 @@
+using DataAccess;
+using FCSAmerica.DifferenceMaker.Models;
 using System;
 using System.Configuration;
+using System.Net;
 using System.Net.Http;
 using System.Web.UI.WebControls;
-
-using DataAccess;
-
-using FCSAmerica.DifferenceMaker.Models;
 
 partial class Redemption : System.Web.UI.Page
 {
@@ -160,11 +159,10 @@ partial class Redemption : System.Web.UI.Page
 
     protected string GetLocation()
     {
-        using (var client = new HttpClient())
+        using (var client = new WebClient())
         {
-            var requestUri = "employee/location/" + Session["currentUser_EmpID"];
-            client.BaseAddress = new Uri(ConfigurationManager.AppSettings["restUrl"]);
-            var result = client.GetStringAsync(requestUri).Result;
+            string requestUri = string.Format("{0}employee/location/{1}", ConfigurationManager.AppSettings["restUrl"], Session["currentUser_EmpID"]);
+            string result = client.DownloadString(new Uri(requestUri));
             return string.IsNullOrEmpty(result) ? string.Empty : result;
         }
     }

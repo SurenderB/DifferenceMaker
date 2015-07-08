@@ -20,8 +20,8 @@
                             <br />
                             <br />
                             <div ng-hide="selectedRecognitionsGivenItems.length==0">
-                                <a href="#" id="printDetailsLink" onclick='window.printTable("pendingDetailsTable")'>Print Details</a>
-                                <table class="detailsTable" width="100%">
+                                <a class="btn btn-default" href="#" id="printDetailsLink" onclick='window.printTable("recognitionsGivenTable")'>Print Details</a>
+                                <table id="recognitionsGivenTable" class="detailsTable" width="100%">
                                     <tr>
                                         <td>Redemption Code</td>
                                         <td>{{selectedRecognitionsGivenItems[0].Award_ID}}</td>
@@ -93,9 +93,9 @@
                             <br />
                             <br />
                             <div ng-hide="selectedRecognitionsReceivedItems.length==0">
-                                <a href="#" id="printDetailsLink" onclick='window.printTable("pendingDetailsTable")'>Print Details</a>
+                                <a class="btn btn-default" href="#" id="printDetailsLink" onclick='window.printTable("recognitionsReceivedTable")'>Print Details</a>
                                 <%--<recognitions-detail/>--%>
-                                <table class="detailsTable" width="100%">
+                                <table id="recognitionsReceivedTable" class="detailsTable" width="100%">
                                     <tr>
                                         <td>Redemption Code</td>
                                         <td>{{selectedRecognitionsReceivedItems[0].Award_ID}}</td>
@@ -150,7 +150,7 @@
                     </td>
                 </tr>
             </table>
-
+            
             <%-- <asp:MultiView ID="mvReceived" runat="server" ActiveViewIndex="0">
                     <asp:View ID="receivedForm" runat="server" EnableTheming="true">
                         <mvReceived:Received ID="awardsReceived" runat="server" />

@@ -16,10 +16,11 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="Scripts/jquery-ui-1.11.2.custom/jquery-ui.css" rel="stylesheet" />
     <link href="Content/ng-grid.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css"  media="screen, print" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"> <!-- Prevents 'Tools -> Compatibility Mode Settings -> Display Intranet sites in compatibility mode' from having negative impact. -->
     <script src="Scripts/jquery-ui-1.11.2.custom/external/jquery/jquery.js"></script>
     <script src="Scripts/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <script src="Scripts/mustache.min.js"></script>
     <script type="text/javascript" src="Scripts/angular.js"></script>
     <script type="text/javascript" src="Scripts/ng-grid.js"></script>
     <script src="app/differenceMakerApp.js"></script>
@@ -30,6 +31,7 @@
     <script src="Scripts/ReportingScripts/showPrintView.js"></script>
     <script type="text/javascript">
         var restUrl = '<%= ConfigurationManager.AppSettings["restUrl"] %>';
+        var dmBaseUrl;
 
         function showHelp() {
             help_view = window.open('<%= ConfigurationManager.AppSettings["instructionsUrl"] %>', 'help_view', 'menubar=yes,resizable=yes,width=640,height=480');
@@ -41,7 +43,7 @@
         }
         $(function () {
             $("#tabAwards").tabs();
-
+            dmBaseUrl = window.location.href.substring(0, window.location.href.toLowerCase().indexOf('ui/') + 3);
         });
     </script>
 </head>

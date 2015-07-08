@@ -25,11 +25,7 @@
         [Route("api/report/payPeriodReward")]
         public IEnumerable<Awards_RedeemedDuringPayPeriod_Result> GetPayPeriodReward_S([FromUri]string payPeriodNumber, [FromUri]bool isAYB)
         {
-            using (var context = new Entities())
-            {
-                var result = context.Awards_RedeemedDuringPayPeriod(payPeriodNumber, isAYB).ToList();
-                return result;
-            }
+            return new ReportQueries().ExportTaxReport(payPeriodNumber, isAYB).ToList();
         }
 
         // Pay period selection for Tax Report Data

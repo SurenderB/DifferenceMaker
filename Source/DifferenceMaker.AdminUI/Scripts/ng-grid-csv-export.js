@@ -62,7 +62,7 @@ function ngGridCsvExportPlugin(opts, $compile) {
             if (csvDataLinkPrevious != null) { csvDataLinkPrevious.remove(); }
 
 
-            if (window.navigator.msSaveBlob) {
+            if (window.navigator.msSaveOrOpenBlob) {
                 var e = angular.element("<span class=\"csv-data-link-span\"><button ng-click='exportIE()'>CSV Export</button></span>");
                 $compile(e)(scope);
                 fp.append(e);
@@ -75,7 +75,7 @@ function ngGridCsvExportPlugin(opts, $compile) {
                 fp.append(csvDataLinkHtml);
             }
             scope.exportIE = function () {
-                window.navigator.msSaveBlob(new Blob([csvData]), 'Export.csv');
+                window.navigator.msSaveOrOpenBlob(new Blob([csvData]), 'Export.csv');
             };
         }
         setTimeout(showDs, 0);

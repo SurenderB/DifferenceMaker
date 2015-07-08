@@ -1,20 +1,16 @@
 #region  Imports...
 
+using DataAccess;
+using FCSAmerica.DifferenceMaker;
+using FCSAmerica.DifferenceMaker.Models;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net.Http;
-using System.Web;
 using System.Web.UI.WebControls;
-
-using DataAccess;
-
-using FCSAmerica.DifferenceMaker;
-using FCSAmerica.DifferenceMaker.Models;
-
-using log4net;
 
 #endregion
 
@@ -312,10 +308,6 @@ partial class Admin_Reporting : System.Web.UI.Page
     /// <param name="year">The year in which to populate pay periods for.</param>
     private void PopulatePayPeriods(int year)
     {
-        string text = null;
-        string formattedPayPeriodSchedule = null;
-        
-        int index = 1;
         ddlPayPeriodAyb.Items.Clear();
 
         var yearPaySchedules = new List<PaySchedule_OfYear_Result>();
@@ -331,12 +323,13 @@ partial class Admin_Reporting : System.Web.UI.Page
             }
             foreach (var yearPaySchedule in yearPaySchedules)
             {
-                var yearPay = yearPaySchedule.PayrollDeadlineDate_dt;
+                var yearPay = yearPaySchedule.PayPeriodNumber_tx;
 
                 if (yearPay != null)
                 {
-                    formattedPayPeriodSchedule = yearPaySchedule.PayPeriodNumber_tx; //index.ToString().PadLeft(2, '0') + " - " + DateTime.Parse(yearPay.ToString()).ToShortDateString();
-                    ddlPayPeriodAyb.Items.Add(new ListItem(formattedPayPeriodSchedule, formattedPayPeriodSchedule));
+                    string payPeriodNumber = yearPay.Split('-')[1].Trim();
+                    string formattedPayPeriodSchedule = yearPaySchedule.PayrollDeadlineDate_dt.ToShortDateString();
+                    ddlPayPeriodAyb.Items.Add(new ListItem(string.Format("{0} - {1}", payPeriodNumber, formattedPayPeriodSchedule), payPeriodNumber));
                     if (yearPaySchedule.PayPeriodNumber_tx == _currentPayPeriod)
                     {
                         ddlPayPeriodAyb.SelectedIndex = ddlPayPeriodAyb.Items.Count - 1;

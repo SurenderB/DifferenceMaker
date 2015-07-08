@@ -1,4 +1,5 @@
 <%@ Master Language="C#" Inherits="Admin_Admin_Master" CodeBehind="Admin.master.cs" %>
+<%@ Import Namespace="System.Security.Policy" %>
 
 <!DOCTYPE html>
 <html ng-app="differenceMakerApp">
@@ -8,11 +9,12 @@
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Scripts/jquery-ui-1.11.2.custom/jquery-ui.css" />
     <link href="../Content/ng-grid.css" rel="stylesheet" />
-    <link href="../style.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet"  media="screen, print" />
     <script src="../Scripts/jquery-ui-1.11.2.custom/external/jquery/jquery.js"></script>
     <script src="../Scripts/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
     <script src="../Scripts/angular.js"></script>
     <script src="../Scripts/ng-grid.js"></script>
+    <script src="../Scripts/mustache.min.js"></script>
     <script type="text/javascript" id="HelpJS">
         function showRedemptionHelp() {
             help_view = window.open('<%= ConfigurationManager.AppSettings["helpUrl"] %>', 'help_view', 'menubar=yes,resizable=yes,width=640,height=480');
@@ -20,7 +22,7 @@
         }
 
         var restUrl = '<%= ConfigurationManager.AppSettings["restUrl"] %>';
-
+        var dmBaseUrl = window.location.href.substring(0, window.location.href.toLowerCase().indexOf('ui/') + 3);
 
         function GetCurrentPageName() {
             //method to get Current page name from url. 

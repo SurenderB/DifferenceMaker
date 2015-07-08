@@ -9,14 +9,14 @@
 
 namespace DifferenceMaker.WebAPI.Controllers
 {
+    using DataAccess;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Text;
     using System.Web.Http;
-
-    using DataAccess;
 
     /// <summary>
     /// The employee controller.
@@ -36,15 +36,23 @@ namespace DifferenceMaker.WebAPI.Controllers
         [Route("api/employee/{networkId}")]
         public IHttpActionResult GetEmpSVbyNetworkID(string networkId)
         {
-            using (var context = new Entities())
+            try
             {
-                var result = context.Employee_HasNetworkID(networkId).FirstOrDefault();
-                if (result != null)
+                using (var context = new Entities())
                 {
-                    return this.Ok(result);
-                }
+                    var result = context.Employee_HasNetworkID(networkId).FirstOrDefault();
+                    if (result != null)
+                    {
+                        return this.Ok(result);
+                    }
 
-                return this.NotFound();
+                    return this.NotFound();
+                }
+            }
+            catch (Exception e)
+            {
+                // return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return this.BadRequest(e.ToString());
             }
         }
 
@@ -77,15 +85,21 @@ namespace DifferenceMaker.WebAPI.Controllers
         [Route("api/employee/location/{employeeId}")]
         public HttpResponseMessage GetLocationByEmpSV(int employeeId)
         {
-            string location;
-
-            using (var context = new Entities())
+            try
             {
-                location = context.Employee_Location(employeeId).ToString();
+                using (Entities context = new Entities())
+                {
+                    string loc = context.Employee_Location(employeeId).FirstOrDefault() ?? "[Unknown]";
+                    var response = Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new StringContent(loc, Encoding.UTF8, "text/html");
+                    return response;
+                }
             }
-            var response = this.Request.CreateResponse(HttpStatusCode.OK);
-            response.Content = new StringContent(location, Encoding.UTF8, "text/html");
-            return response;
+            catch (Exception e)
+            {
+                // return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
         }
 
         // Gets a list of all Active Employees
@@ -105,12 +119,20 @@ namespace DifferenceMaker.WebAPI.Controllers
         [Route("api/employee/employeeTeam/{employeeId}")]
         public HttpResponseMessage GetTeamByEmpSV(int? employeeId)
         {
-            using (var context = new Entities())
+            try
             {
-                var result = context.Team_OfEmployee(employeeId).SingleOrDefault();
-                var response = this.Request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new StringContent(result, Encoding.UTF8, "text/html");
-                return response;
+                using (var context = new Entities())
+                {
+                    var result = context.Team_OfEmployee(employeeId).SingleOrDefault();
+                    var response = this.Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new StringContent(result, Encoding.UTF8, "text/html");
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                // return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
             }
         }
         // TODO: WHAT IS THE DIFFERENCE BETWEEN THIS ONE AND THE ONE BELOW THIS - NOT USED ANYWHERE
@@ -119,16 +141,24 @@ namespace DifferenceMaker.WebAPI.Controllers
         [Route("api/employee/employeeLeader/{employeeId}")]
         public HttpResponseMessage GetLeaderbySV(int? employeeId)
         {
-            using (var context = new Entities())
+            try
             {
-                var result = context.Leader_OfEmployee(employeeId).SingleOrDefault();
-                var response = this.Request.CreateResponse(HttpStatusCode.OK);
-                if (result != null)
+                using (var context = new Entities())
                 {
-                    response.Content = new StringContent(result.LeaderDisplayName, Encoding.UTF8, "text/html");
-                }
+                    var result = context.Leader_OfEmployee(employeeId).SingleOrDefault();
+                    var response = this.Request.CreateResponse(HttpStatusCode.OK);
+                    if (result != null)
+                    {
+                        response.Content = new StringContent(result.LeaderDisplayName, Encoding.UTF8, "text/html");
+                    }
 
-                return response;
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                // return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
             }
         }
         // TODO: WHAT IS THE DIFFERENCE BETWEEN THIS ONE AND THE ONE ABOVE THIS - NOT currently USED ANYWHERE

@@ -59,7 +59,7 @@
                             <br />
                             <br />
                             <div ng-hide="selectedRecognitionsPendingItems.length==0">
-                                <a href="#" id="printDetailsLink" onclick='window.printTable("pendingDetailsTable")'>Print Details</a>
+                                <a class="btn btn-default" href="#" id="printDetailsLink" onclick='window.printTable("pendingDetailsTable")'>Print Details</a>
                                 <table id="pendingDetailsTable" class="detailsTable" width="100%">
                                     <tr>
                                         <td>Redemption Code</td>

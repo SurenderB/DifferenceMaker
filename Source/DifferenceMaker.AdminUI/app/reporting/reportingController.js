@@ -68,9 +68,11 @@ differenceMakerApp.controller('reportingController', function ($scope, $compile)
      };
 
     $scope.loadTaxData = function () {
+        var payperiod = $("[jsid='ddlPayPeriodAyb']")[0];
+        var payPeriodValue = payperiod.options[payperiod.selectedIndex].text.split("/")[2] + "-" + payperiod.value;
 
         var sourceTaxUrl = window.restUrl + "report/payPeriodReward?payPeriodNumber=" +
-            $("[jsid='ddlPayPeriodAyb']")[0].value +
+            payPeriodValue +
             '&isAYB=' + $("[jsid = 'ddlAybReportType']")[0].value;
 
         $.getJSON(sourceTaxUrl, function (data) {

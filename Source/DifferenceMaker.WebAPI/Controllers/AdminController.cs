@@ -10,8 +10,16 @@
 
     public class AdminController : ApiController
     {
+        /// <summary>
+        /// The get at your best_by_ ay b_ s v_ s.
+        /// </summary>
+        /// <param name="atYourBest_SV">
+        /// The at Your Best_ SV.
+        /// </param>
         /// View the recognition detail of a given award
-        // http://localhost/DifferenceMaker.WebAPI/api/admin/viewRecognition/146916
+        /// <returns>
+        /// The <see cref="IEnumerable"/>.
+        /// </returns>
         [Route("api/admin/viewRecognition/{atYourBest_SV}")]
         public IEnumerable<Award_S_Result> GetAtYourBest_by_AYB_SV_S(int atYourBest_SV)
         {
@@ -23,6 +31,19 @@
         }
 
         // http://localhost/DifferenceMaker.WebAPI/api/admin/deactivateRecognition/146916
+
+        /// <summary>
+        /// The deactivate recognition award.
+        /// </summary>
+        /// <param name="awardId">
+        /// The award id.
+        /// </param>
+        /// <param name="deactivateAwardsDto">
+        /// The deactivate awards DTO.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IHttpActionResult"/>.
+        /// </returns>
         [Route("api/admin/deactivateRecognition/{awardId}"), HttpPut]
         public IHttpActionResult DeactivateRecognitionAward(int? awardId, AwardDto deactivateAwardsDto)
         {

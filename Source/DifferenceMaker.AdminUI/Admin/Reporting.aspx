@@ -3,8 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphAdminContent" runat="Server">
     <script type="text/javascript">
         $(function () {
-            $("[jsid = 'webCalStartDate']").datepicker();
-            $("[jsid = 'webCalEndDate']").datepicker();
+            var startDatePicker = $("[jsid = 'webCalStartDate']").datepicker();
+            startDatePicker.datepicker('setDate', new Date());    // Default to today
+            var endDatePicker = $("[jsid = 'webCalEndDate']").datepicker();
+            endDatePicker.datepicker('setDate', new Date());    // Default to today
         });
 
         var currentNodeValue = '<%= Session["CurrentNodeValue"] %>';
@@ -58,7 +60,7 @@
                                                 <tr>
                                                     <td align="right">Start Date:</td>
                                                     <td align="left">
-                                                        <input type="text" id="webCalStartDate" jsid="webCalStartDate" name="txtWebCalStartDate" runat="server" value="1/1/2013" />
+                                                        <input type="text" id="webCalStartDate" jsid="webCalStartDate" name="txtWebCalStartDate" runat="server" />
                                                     </td>
                                                     <td>
                                                         <asp:RequiredFieldValidator ID="valStartDate" runat="server" ErrorMessage="A start date is required"
@@ -68,7 +70,7 @@
                                                 <tr>
                                                     <td align="right">End Date:</td>
                                                     <td align="left">
-                                                        <input type="text" id="webCalEndDate" jsid="webCalEndDate" name="txtWebCalEndDate" runat="server" value="12/31/2014" />
+                                                        <input type="text" id="webCalEndDate" jsid="webCalEndDate" name="txtWebCalEndDate" runat="server" />
 
                                                     </td>
                                                     <td>

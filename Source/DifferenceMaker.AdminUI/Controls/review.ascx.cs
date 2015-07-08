@@ -175,6 +175,7 @@ partial class review : System.Web.UI.UserControl
         var currentUser = Session["currentUser_EmpID"];
         //var recipientId = this.GetEmployeeId(SessionHelper.GetValue<string>(Session["Recipient_Name"]));
         var recipientId = SessionHelper.GetValue<string>(Session["Recipient_SV"]);
+        var isAyb = SessionHelper.GetValue<bool>(Session["IsAtYourBest"]);
 
         var reason = Session["Reason"];
         var recognitionDetail = new RecognitionInsertDto()
@@ -183,7 +184,7 @@ partial class review : System.Web.UI.UserControl
                 Recipient_Emp_SV = Convert.ToInt32(recipientId),
                 DatePresented_DT = datePresented,
                 Reason_TX = SessionHelper.GetValue<string>(reason),
-                IsAYB_yn = false,
+                IsAYB_yn = isAyb,
                 AwardAmt_cur = awardAmt,
                 Description_tx = lblAwardDescription.Text
             };

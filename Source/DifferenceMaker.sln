@@ -9,16 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B02E2142-A0D1-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DifferenceMaker.WebAPI", "DifferenceMaker.WebAPI\DifferenceMaker.WebAPI.csproj", "{3656ED7D-5998-4165-A595-7FFB93D2EE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DifferenceMaker.AdminUI", "DifferenceMaker.AdminUI\DifferenceMaker.AdminUI.csproj", "{6FF32573-B5F8-492C-9A68-3487D89CEE1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DifferenceMaker.WebUI", "DifferenceMaker.AdminUI\DifferenceMaker.WebUI.csproj", "{6FF32573-B5F8-492C-9A68-3487D89CEE1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{33297E87-3C1A-4B0A-9087-BAD79D042411}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3D70E229-D995-4E7E-8634-AB658D573158}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
