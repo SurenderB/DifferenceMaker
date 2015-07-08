@@ -148,6 +148,7 @@
     <Compile Include="PaySchedule_OfYear_Result.cs">
       <DependentUpon>DifferenceMakerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportQueries.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
